@@ -5,21 +5,34 @@
     <meta charset="utf-8">
     <title>献礼祖国75周年诞辰-数据可视化</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/float-column-frame.css">
+    <link rel="stylesheet" href="./css/navi-bar.css">
     
 </head>
 
-<body>
+<body id="body">
+    <div id="float-column-frame">
+    </div>
+    <div id="navi-bar">
+        <ul id="navi-list">
+            <li><div id="title">献礼祖国75周年诞辰-数据可视化</div></li>
+            <li class="navi-item" onclick="" ><div>经济数据</div></li>
+            <li class="navi-item" onclick=""><div>产业数据</div></li>
+            <li class="navi-item" onclick=""><div>教育数据</div></li>
+            <li class="navi-item" onclick=""><div>人口数据</div></li>
+            <li class="navi-item" onclick=""><div>国际化</div></li>
+        </ul>
+    </div>
     <div id="chart-container"></div>
-    <div id="float-column-frame"></div>
-    <script src="./js/connect.js" type="module"></script>
     <!-- 引入echart -->
     <script src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/echarts.min.js"></script>
     <!-- 引入百度地图api -->
-    <script src="https://api.map.baidu.com/api?v=3.0&ak=Ii9yRVI0dHKofrL1y8SP9IDU05Sx13qq"></script>
+    <script src="https://api.map.baidu.com/getscript?v=3.0&ak=Ii9yRVI0dHKofrL1y8SP9IDU05Sx13qq"></script>
     <!-- 引入echart的百度地图 -->
     <script src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/extension/bmap.min.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/float-column-frame.js"></script>
+    <script src="./js/navi-bar.js"></script>
 </body>
 
 </html>

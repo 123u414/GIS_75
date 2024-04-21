@@ -1,0 +1,78 @@
+
+
+#navi-bar {
+    width: 100%;
+    max-height: 10vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    background: rgb(0, 140, 255);
+}
+
+
+
+#navi-list {
+    max-height: 10vh;
+    display: flex;
+    width: 100%;
+    min-width: 100px;
+    list-style-type: none;
+    font-family: '方正小标宋_GBK';
+    font-size: large;
+}
+
+
+
+.navi-item {
+    
+    float: right;
+    animation-duration: 0.5s;
+    animation-name: list-unhover;
+    animation-fill-mode: forwards;
+}
+
+.navi-item:hover {
+    animation-duration: 0.5s;
+    animation-name: list-hover;
+    animation-fill-mode: forwards;
+}
+
+
+#navi-list>li {
+    
+    height: auto;
+    width: auto;
+    float: left;
+    padding: 20px;
+}
+
+#navi-list>.navi-item {
+    
+    padding-top: 25px;
+    padding: auto;
+    user-select: none;
+}
+
+#title {
+    font-size: 27px;
+    width: 100%;
+    padding: 0;
+    user-select: none;
+}
+
+@keyframes list-hover {
+    to {
+        background: rgb(0, 65, 105);
+    }
+}
+
+@keyframes list-unhover {
+    from {
+        background: rgb(0, 65, 105);
+    }
+
+    to {
+        background: rgb(0, 112, 204)
+    }
+}

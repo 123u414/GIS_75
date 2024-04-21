@@ -1,0 +1,14 @@
+#float-column-frame {
+    border-radius: 10px;
+    position: absolute;
+    left: 1%;
+    top: 10vh;
+    z-index: 10;
+    height: 20%;
+    width: 20%;
+    background: #000;
+    opacity: 0.6;
+    resize: both;
+    overflow: hidden;
+    cursor: move;
+}

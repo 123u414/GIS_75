@@ -78,7 +78,7 @@ resizeObserver.observe(dom);
 
 resizeObserver.observe(chart);
 
-fetch('http://127.0.0.1:1949/data')
+fetch('http://127.0.0.1:1949/pm2_5')
     .then(response => response.json())
     .then(dataFromBackend => {
         // 将从后端获取的数据填充到 data 数组中
@@ -99,5 +99,4 @@ fetch('http://127.0.0.1:1949/data')
     .catch(error => {
         console.error('Error fetching data:', error);
     });
-
 

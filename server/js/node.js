@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
     database: 'data75',
 })
 connection.connect();
-app.get('/data', (req, res) => {
+app.get('/pm2_5', (req, res) => {
     connection.query('select * from pm2_5 order by value desc', function (error, results, fields) {
         if (error) throw error;
         for (var i = 0; i < results.length; i++) {

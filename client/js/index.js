@@ -438,13 +438,13 @@ function renderItem(params, api) {
 option = {
     backgroundColor: 'transparent',
     title: {
-        text: '全国主要城市空气质量',
-        subtext: 'data from PM25.in',
-        sublink: 'http://www.pm25.in',
-        left: 'center',
-        textStyle: {
-            color: '#fff'
-        }
+        // text: '全国主要城市空气质量',
+        // subtext: 'data from PM25.in',
+        // sublink: 'http://www.pm25.in',
+        // left: 'center',
+        // textStyle: {
+        //     color: '#fff'
+        // }
     },
     tooltip: {
         trigger: 'item'
@@ -455,14 +455,6 @@ option = {
         roam: true,
         mapStyle: {
             styleJson: [
-
-                {
-                    featureType: 'LANDDOMESTIC',
-                    elementType: 'geometry',
-                    stylers: {
-                        color: '#2c7ebdff'
-                    }
-                },
                 {
                     featureType: 'water',
                     elementType: 'all',
