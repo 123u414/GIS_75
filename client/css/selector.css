@@ -1,15 +1,13 @@
-#float-column-frame {
+#selector {
     border-radius: 10px;
     position: absolute;
     left: 1%;
-    top: 10vh;
+    bottom: 5vh;
     z-index: 10;
     height: 20%;
-    width: 100%;
+    width: 50%;
     background: #000;
     opacity: 0.6;
-    resize: both;
     overflow: hidden;
-    cursor: move;
-    max-width: 750px;
+    max-width: 500px;
 }

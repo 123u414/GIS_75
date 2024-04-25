@@ -7,7 +7,7 @@
     top: 0px;
     left: 0px;
     z-index: 10;
-    background: rgb(0, 140, 255);
+    background: rgb(170,56,30);
 }
 
 
@@ -63,16 +63,16 @@
 
 @keyframes list-hover {
     to {
-        background: rgb(0, 65, 105);
+        background: rgb(206, 48, 12)
     }
 }
 
 @keyframes list-unhover {
     from {
-        background: rgb(0, 65, 105);
+        background: rgb(206, 48, 12);
     }
 
     to {
-        background: rgb(0, 112, 204)
+        background: rgb(170,56,30)
     }
 }
