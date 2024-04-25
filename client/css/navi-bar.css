@@ -1,5 +1,3 @@
-
-
 #navi-bar {
     width: 100%;
     max-height: 10vh;
@@ -7,7 +5,7 @@
     top: 0px;
     left: 0px;
     z-index: 10;
-    background: rgb(170,56,30);
+    background: rgb(170, 56, 30);
 }
 
 
@@ -25,7 +23,7 @@
 
 
 .navi-item {
-    
+
     float: right;
     animation-duration: 0.5s;
     animation-name: list-unhover;
@@ -40,7 +38,7 @@
 
 
 #navi-list>li {
-    
+
     height: auto;
     width: auto;
     float: left;
@@ -48,7 +46,7 @@
 }
 
 #navi-list>.navi-item {
-    
+
     padding-top: 25px;
     padding: auto;
     user-select: none;
@@ -73,6 +71,6 @@
     }
 
     to {
-        background: rgb(170,56,30)
+        background: rgb(170, 56, 30)
     }
 }

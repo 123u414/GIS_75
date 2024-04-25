@@ -37,7 +37,7 @@ document.getElementById('data-form').addEventListener('submit', function (event)
                         max: 140000,
                     }
                 });
-                update_data('GDP数据', res,'TOP 5')
+                update_data('GDP数据', res, 'TOP 5')
             }
 
         })

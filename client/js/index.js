@@ -1,6 +1,6 @@
 var mapChart = document.getElementById('chart-container');
 var geoMap = echarts.init(mapChart);
-var map_option  = {
+var map_option = {
     graphic: [
         {
             type: 'image', // 图形元素类型
@@ -50,6 +50,9 @@ fetch('http://127.0.0.1:1949/china.json')
                     ]
                 },
                 text: ['高', '低'],
+                textStyle: {
+                    color: '#eee'
+                },
                 calculable: true
             },
             toolbox: {
@@ -69,7 +72,7 @@ fetch('http://127.0.0.1:1949/china.json')
                     type: 'map',
                     roam: true,
                     map: 'china',
-                    scaleLimit:{min:1,max:5},
+                    scaleLimit: { min: 0.5, max: 5 },
                     emphasis: {
                         label: {
                             show: true
