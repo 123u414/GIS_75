@@ -10,6 +10,5 @@
     opacity: 0.6;
     resize: both;
     overflow: hidden;
-    cursor: move;
     max-width: 750px;
 }

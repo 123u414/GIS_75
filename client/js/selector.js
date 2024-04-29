@@ -57,6 +57,14 @@ document.getElementById('data-form').addEventListener('submit', function (event)
                     }
                 });
                 update_data('第二产业增加值', res, 'TOP 5 （单位：亿元）')
+            } else if (formData.type == 'i18n') {
+                geoMap.setOption({
+                    visualMap: {
+                        min: 400000,
+                        max: 500000000,
+                    }
+                });
+                update_data('进出口贸易额', res, 'TOP 5 （单位：千万美元）')
             }
 
         })
@@ -97,7 +105,7 @@ geoMap.on('click', function (params) {
                 } else if (formData.type === 'i18n') {
                     unit = '千美元'
                     data_type = '进出口贸易额'
-                }else if (formData.type === 'production') {
+                } else if (formData.type === 'production') {
                     unit = '亿元'
                     data_type = '第二产业增加值'
                 }
