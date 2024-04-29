@@ -15,6 +15,7 @@ var map_option = {
         },
     ]
 }
+var from_pop = 0
 geoMap.setOption(map_option);
 window.addEventListener('resize', geoMap.resize);
 
@@ -86,8 +87,20 @@ fetch('http://127.0.0.1:1949/china.json')
         showGDP()
     });
 
+function set_clear_op() {
+    if (from_pop) {
+        from_pop = 0;
+        var clear_op = float_coloumn_frame.getOption()
+        for (var i = 0; i < clear_op.series.length; i++) {
+            clear_op.series[i] = []
+        }
+        float_coloumn_frame.setOption(clear_op, true)
+    }
+}
 
 function showGDP() {
+    document.getElementById('select-type').value = 'gdp'
+    set_clear_op()
     fetch('http://127.0.0.1:1949/gdp')
         .then(res => res.json())
         .then(gdpData => {
@@ -96,21 +109,6 @@ function showGDP() {
                     left: 'right',
                     min: 2000,
                     max: 140000,
-                    inRange: {
-                        color: [
-                            '#313695',
-                            '#4575b4',
-                            '#74add1',
-                            '#abd9e9',
-                            '#e0f3f8',
-                            '#ffffbf',
-                            '#fee090',
-                            '#fdae61',
-                            '#f46d43',
-                            '#d73027',
-                            '#a50026'
-                        ]
-                    },
                     text: ['高', '低'],
                     calculable: true
                 },
@@ -132,6 +130,13 @@ function showGDP() {
             })
             // console.log(gdpData)
             float_coloumn_frame.setOption({
+                title: {
+                    text: 'TOP 5 （单位：亿元）',
+                    textStyle: {
+                        color: '#fff'
+
+                    }
+                },
                 legend: {
                     data: ['GDP数据'],
                     orient: 'horizontal',
@@ -145,7 +150,6 @@ function showGDP() {
                 },
                 series: [
                     {
-
                         name: 'GDP数据',
                         type: 'bar',
                         data: [],
@@ -157,6 +161,8 @@ function showGDP() {
 }
 
 function showEdu() {
+    document.getElementById('select-type').value = 'university'
+    set_clear_op()
     fetch('http://127.0.0.1:1949/edu')
         .then(res => res.json())
         .then(uniData => {
@@ -165,27 +171,11 @@ function showEdu() {
                     left: 'right',
                     min: 1,
                     max: 200,
-                    inRange: {
-                        color: [
-                            '#313695',
-                            '#4575b4',
-                            '#74add1',
-                            '#abd9e9',
-                            '#e0f3f8',
-                            '#ffffbf',
-                            '#fee090',
-                            '#fdae61',
-                            '#f46d43',
-                            '#d73027',
-                            '#a50026'
-                        ]
-                    },
                     text: ['高', '低'],
                     calculable: true
                 },
                 series: [
                     {
-
                         name: '高校数量',
                         type: 'map',
                         roam: true,
@@ -201,6 +191,13 @@ function showEdu() {
             })
             //console.log(uniData)
             float_coloumn_frame.setOption({
+                title: {
+                    text: 'TOP 5 （单位：所）',
+                    textStyle: {
+                        color: '#fff'
+
+                    }
+                },
                 legend: {
                     data: ['高校数量'],
                     orient: 'horizontal',
@@ -219,6 +216,192 @@ function showEdu() {
                         type: 'bar',
                         data: [],
                         data: convertYData(uniData)
+                    }
+                ]
+            });
+        })
+}
+
+function showI18n() {
+    document.getElementById('select-type').value = 'i18n'
+    set_clear_op()
+    fetch('http://127.0.0.1:1949/i18n')
+        .then(res => res.json())
+        .then(i18nData => {
+            console.log(i18nData)
+            geoMap.setOption({
+                visualMap: {
+                    left: 'right',
+                    min: 400000,
+                    max: 500000000,
+                    text: ['高', '低'],
+                    calculable: true
+                },
+                series: [
+                    {
+                        name: '进出口贸易额',
+                        type: 'map',
+                        roam: true,
+                        map: 'china',
+                        emphasis: {
+                            label: {
+                                show: true
+                            }
+                        },
+                        data: i18nData
+                    }
+                ]
+            })
+            float_coloumn_frame.setOption({
+                title: {
+                    text: 'TOP 5 （单位：千万美元）',
+                    textStyle: {
+                        color: '#fff'
+
+                    }
+                },
+                legend: {
+                    data: ['进出口贸易额'],
+                    orient: 'horizontal',
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    bottom: 10
+                },
+                xAxis: {
+                    data: convertXData(i18nData)
+                },
+                series: [
+                    {
+
+                        name: '进出口贸易额',
+                        type: 'bar',
+                        data: [],
+                        data: convertYData(i18nData)
+                    }
+                ]
+            });
+        })
+}
+
+function showProduction() {
+    document.getElementById('select-type').value = 'production'
+    set_clear_op()
+    fetch('http://127.0.0.1:1949/production')
+        .then(res => res.json())
+        .then(prodData => {
+            console.log(prodData)
+            geoMap.setOption({
+                visualMap: {
+                    left: 'right',
+                    min: 800,
+                    max: 55000,
+                    text: ['高', '低'],
+                    calculable: true
+                },
+                series: [
+                    {
+                        name: '第二产业增加值',
+                        type: 'map',
+                        roam: true,
+                        map: 'china',
+                        emphasis: {
+                            label: {
+                                show: true
+                            }
+                        },
+                        data: prodData
+                    }
+                ]
+            })
+            float_coloumn_frame.setOption({
+                title: {
+                    text: 'TOP 5 （单位：亿元）',
+                    textStyle: {
+                        color: '#fff'
+
+                    }
+                },
+                legend: {
+                    data: ['第二产业增加值'],
+                    orient: 'horizontal',
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    bottom: 10
+                },
+                xAxis: {
+                    data: convertXData(prodData)
+                },
+                series: [
+                    {
+
+                        name: '第二产业增加值',
+                        type: 'bar',
+                        data: [],
+                        data: convertYData(prodData)
+                    }
+                ]
+            });
+        })
+}
+
+function showPop() {
+    document.getElementById('select-type').value = 'population'
+    set_clear_op()
+    fetch('http://127.0.0.1:1949/population')
+        .then(res => res.json())
+        .then(popData => {
+            var city = [], country = [], sum = []
+            for (var i = 0; i < popData.length; i++) {
+                city.push({ name: popData[i].name, value: popData[i].city })
+                country.push({ name: popData[i].name, value: popData[i].countryside })
+                sum.push({ name: popData[i].name, value: popData[i].countryside + popData[i].city })
+            }
+            geoMap.setOption({
+                visualMap: {
+                    left: 'right',
+                    min: 300,
+                    max: 13000,
+                    text: ['高', '低'],
+                    calculable: true
+                },
+                series: [
+                    {
+                        name: '总人口',
+                        type: 'map',
+                        roam: true,
+                        map: 'china',
+                        data: sum
+                    },
+                ]
+            })
+            float_coloumn_frame.setOption({
+                title: {
+                    text: 'TOP 5 （单位：万人）',
+                    textStyle: {
+                        color: '#fff'
+
+                    }
+                },
+                legend: {
+                    data: ['总人口'],
+                    orient: 'horizontal',
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    bottom: 10
+                },
+                xAxis: {
+                    data: convertXData(sum)
+                },
+                series: [
+                    {
+
+                        name: '总人口',
+                        type: 'bar',
+                        data: [],
+                        data: convertYData(sum)
                     }
                 ]
             });

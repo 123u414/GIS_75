@@ -18,16 +18,19 @@
         <form id="data-form">
             年份:
             <select name="year" id="select-year">
-                <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
+                <option value="2018">2018</option>
             </select>
             类型:
             <select name="type" id="select-type">
                 <option value="gdp">经济数据</option>
+                <option value="production">产业数据</option>
                 <option value="university">教育数据</option>
+                <option value="population">人口数据</option>
+                <option value="i18n">国际化数据</option>
             </select>
             排序:
             <select name="order" id="select-order">
@@ -49,16 +52,16 @@
             <li class="navi-item" onclick="showGDP()">
                 <div>经济数据</div>
             </li>
-            <li class="navi-item" onclick="">
+            <li class="navi-item" onclick="showProduction()">
                 <div>产业数据</div>
             </li>
             <li class="navi-item" onclick="showEdu()">
                 <div>教育数据</div>
             </li>
-            <li class="navi-item" onclick="">
+            <li class="navi-item" onclick="showPop()">
                 <div>人口数据</div>
             </li>
-            <li class="navi-item" onclick="">
+            <li class="navi-item" onclick="showI18n()">
                 <div>国际化</div>
             </li>
         </ul>
@@ -68,7 +71,7 @@
     <script src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/echarts.min.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/float-column-frame.js"></script>
-    <script src="./js/navi-bar.js"></script>
+    <!-- <script src="./js/navi-bar.js"></script> -->
     <script src="./js/selector.js"></script>
 </body>
 

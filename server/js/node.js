@@ -17,19 +17,14 @@ var connection = mysql.createConnection({
     database: 'data75',
 })
 connection.connect();
-app.get('/pm2_5', (req, res) => {
-    connection.query('select * from pm2_5 order by value desc', function (error, results, fields) {
-        if (error) throw error;
-        res.json(results);
-    })
-})
+
 
 app.get('/china.json', (req, res) => {
     res.sendFile('asserts/china.json', { root: __dirname })
 })
 
 app.get('/gdp', (req, res) => {
-    connection.query('select name,value from gdp where year=2023 order by value desc', function (error, results, fields) {
+    connection.query('select name,value from gdp where year=2022 order by value desc', function (error, results, fields) {
         if (error) throw error;
         res.json(results);
     })
@@ -42,11 +37,32 @@ app.get('/edu', (req, res) => {
     })
 })
 
+app.get('/population', (req, res) => {
+    connection.query('select name, city,countryside from population where year=2022 order by (city+countryside) desc', function (error, result, field) {
+        if (error) throw error;
+        res.json(result);
+    })
+})
+
+app.get('/i18n', (req, res) => {
+    connection.query('select name,value from i18n where year=2022 order by value desc', function (error, result, field) {
+        if (error) throw error;
+        res.json(result);
+    })
+})
+
+app.get('/production', (req,res)=> {
+    connection.query('select name,value  from production where year=2022 order by value desc', function (error, result, field) {
+        if (error) throw error;
+        res.json(result);
+    })
+})
+
 app.post('/search', (req, res) => {
     const year = req.body.year;
     const type = req.body.type;
     const order = req.body.order;
-    const sql = `select name,value from ${type} where year = ${year} order by value ${order}`
+    const sql = `select * from ${type} where year = ${year} order by value ${order}`
     connection.query(sql, function (error, result, field) {
         if (error) throw error;
         res.json(result);
@@ -56,7 +72,7 @@ app.post('/search', (req, res) => {
 app.post('/history', (req, res) => {
     const name = req.body.name;
     const type = req.body.type;
-    const sql = `select year,value from ${type} where name = '${name}' order by year asc`
+    const sql = `select * from ${type} where name = '${name}' order by year asc`
     connection.query(sql, function (error, result, field) {
         if (error) throw error;
         res.json(result);

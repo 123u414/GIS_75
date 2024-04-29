@@ -10,20 +10,37 @@ data.sort(function (a, b) {
 
 var convertXData = function (data) {
     var xdata = [];
+    var flag = 0;
     for (var i = 0; i < 5; i++) {
-        var tmpxdata = data[i].name;
-        if (tmpxdata) {
-            xdata.push(data[i].name)
+        if (data[i].name === '香港特别行政区' || data[i].name === '澳门特别行政区') { // 只统计内地
+            flag = 1;
+        } else {
+            if (flag && i == 4) {
+                xdata.push(data[i].name)
+                xdata.push(data[i + 1].name)
+            } else {
+                xdata.push(data[i].name)
+            }
+
         }
+
     }
     return xdata
 }
 var convertYData = function (data) {
     var ydata = [];
+    var flag = 0;
     for (var i = 0; i < 5; i++) {
-        var tmpydata = data[i].value;
-        if (tmpydata) {
-            ydata.push(data[i].value)
+        if (data[i].name === '香港特别行政区' || data[i].name === '澳门特别行政区') {
+            flag = 1;
+        } else {
+            if (flag && i == 4) {
+                ydata.push(data[i].value)
+                ydata.push(data[i + 1].value)
+            } else {
+                ydata.push(data[i].value)
+            }
+
         }
     }
     return ydata
@@ -66,6 +83,7 @@ resizeObserver.observe(float_dom);
 resizeObserver.observe(chart);
 
 function update_data(name, data, title) {
+    set_clear_op()
     float_coloumn_frame.setOption({
         title: {
             text: title,
